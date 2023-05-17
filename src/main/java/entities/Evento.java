@@ -48,13 +48,21 @@ public class Evento {
 	}
 
 	public Evento(String titolo, Date dataEvento, String descrizione, TipoEvento tipoEvento,
-			Integer numeroMassimoPartecipanti, Location Location) {
+			Integer numeroMassimoPartecipanti, Location location) {
 		this.titolo = titolo;
 		this.dataEvento = dataEvento;
 		this.descrizione = descrizione;
 		this.tipoEvento = tipoEvento;
 		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+		this.location = location;
 
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [id =" + id + ", title = " + titolo + ", dataEvento = " + dataEvento + ", descrizione = "
+				+ descrizione + ", tipoEvento = " + tipoEvento + ", numMaxPartecipanti = " + numeroMassimoPartecipanti
+				+ ", location = " + location + ", partecipazioniEvento = " + partecipazioni;
 	}
 
 }
