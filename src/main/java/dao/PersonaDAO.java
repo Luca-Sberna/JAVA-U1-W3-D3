@@ -38,10 +38,12 @@ public class PersonaDAO {
 		entityManager.close();
 	}
 
-	public void refresh(Persona persona) {
+	public void update(Persona persona) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		persona = entityManager.merge(persona);
-		entityManager.refresh(persona);
+		entityManager.getTransaction().begin();
+		entityManager.merge(persona);
+		entityManager.getTransaction().commit();
 		entityManager.close();
 	}
+
 }

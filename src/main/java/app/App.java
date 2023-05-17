@@ -32,12 +32,6 @@ public class App {
 		Persona persona = new Persona("Luca", "Salazar", "Salazar.Luca@email.it", dataDiNascita,
 				Persona.TipoEvento.MASCHIO, 0);
 		personaDAO.save(persona);
-		log.info("-------------------------");
-		log.info(persona.toString());
-		log.info("-------------------------");
-		// Aumento il numero delle partecipazioni della persona
-		persona.setListaPartecipazioni(persona.getListaPartecipazioni() + 1);
-		personaDAO.refresh(persona);
 
 		// Creo una location
 		Location location = new Location("Piazza del Duomo", "Milano");
@@ -52,6 +46,9 @@ public class App {
 		Partecipazione partecipazione = new Partecipazione(persona.getId().toString(), evento,
 				Partecipazione.TipoEvento.CONFERMATA);
 		partecipazioneDAO.save(partecipazione);
+		// Aumento il numero delle partecipazioni della persona
+		persona.setListaPartecipazioni(persona.getListaPartecipazioni() + 1);
+		personaDAO.update(persona);
 
 		log.info("-------------------------");
 		log.info(location.toString());
