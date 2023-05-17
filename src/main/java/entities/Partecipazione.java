@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -23,10 +24,12 @@ import lombok.ToString;
 public class Partecipazione {
 	@Id
 	@GeneratedValue
-
 	private UUID id;
 	private String persona;
-	private String evento;
+
+	@ManyToOne
+	private Evento evento;
+
 	@Enumerated(EnumType.STRING)
 	private TipoEvento stato;
 
@@ -34,7 +37,7 @@ public class Partecipazione {
 		CONFERMATA, DA_CONFERMARE
 	}
 
-	public Partecipazione(String persona, String evento, TipoEvento stato) {
+	public Partecipazione(String persona, Evento evento, TipoEvento stato) {
 		this.persona = persona;
 		this.evento = evento;
 		this.stato = stato;

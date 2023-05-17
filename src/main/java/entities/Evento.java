@@ -1,16 +1,21 @@
 package entities;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,7 +24,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name = "eventi")
-
+@NoArgsConstructor
 public class Evento {
 	@Id
 	@GeneratedValue
@@ -31,23 +36,25 @@ public class Evento {
 	@Enumerated(EnumType.STRING)
 	private TipoEvento tipoEvento;
 	private Integer numeroMassimoPartecipanti;
-	private String location;
+
+	@OneToMany(mappedBy = "evento", cascade = CascadeType.REMOVE)
+	private Set<Partecipazione> partecipazioni;
+
+	@ManyToOne
+	private Location location;
 
 	public enum TipoEvento {
 		PUBBLICO, PRIVATO
 	}
 
-	public Evento() {
-	}
-
 	public Evento(String titolo, Date dataEvento, String descrizione, TipoEvento tipoEvento,
-			Integer numeroMassimoPartecipanti, String Location) {
+			Integer numeroMassimoPartecipanti, Location Location) {
 		this.titolo = titolo;
 		this.dataEvento = dataEvento;
 		this.descrizione = descrizione;
 		this.tipoEvento = tipoEvento;
 		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
-		this.location = location;
+
 	}
 
 }

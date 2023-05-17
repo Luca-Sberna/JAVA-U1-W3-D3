@@ -1,5 +1,6 @@
 package entities;
 
+import java.sql.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Persona {
 	private String nome;
 	private String cognome;
 	private String email;
-	private Integer dataDiNascita;
+	private Date dataDiNascita;
 	@Enumerated(EnumType.STRING)
 	private TipoEvento sesso;
 	private Integer listaPartecipazioni;
@@ -37,7 +38,7 @@ public class Persona {
 		MASCHIO, FEMMINA
 	}
 
-	public Persona(String nome, String cognome, String email, Integer dataDiNascita, TipoEvento sesso,
+	public Persona(String nome, String cognome, String email, Date dataDiNascita, TipoEvento sesso,
 			Integer listaPartecipazioni) {
 		this.nome = nome;
 		this.cognome = cognome;
