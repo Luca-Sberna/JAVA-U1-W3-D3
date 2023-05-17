@@ -5,7 +5,7 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import app.Evento;
+import entities.Evento;
 
 public class EventoDAO {
 	private EntityManagerFactory entityManagerFactory;

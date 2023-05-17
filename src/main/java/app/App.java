@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import dao.EventoDAO;
+import entities.Evento;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
